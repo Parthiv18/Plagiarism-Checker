@@ -7,7 +7,7 @@ def readFile(fileName):
     return fileName.read()
 #Split File
 def splitFile(fileName):
-    return fileName.split(" ")
+    return fileName.split()
 #Rule1: Same file
 def checkFile(readFile1,readFile2):
     if readFile1 == readFile2:
