@@ -37,13 +37,15 @@ def consecutiveCounter(newList):
         #check the conditions for 4 consecutive numbers in a row
         if (newList[i] == newList[i + 1] - 1 and newList[i] == newList[i + 2] - 2 and newList[i] == newList[i + 3] - 3):
             countsOfFour += 1 #increase counter
-        if countsOfFour == 1: #if the counts of 4 is one make new counter to 1
-            count2 = 1
+        if (countsOfFour == 1 and countsOfFour%4==0):
+            count2 = countsOfFour/2
+        elif ((countsOfFour % 2 == 0) and (countsOfFour%4 != 0)): #if the counts of 4 is one make new counter to 1
+            count2 = (countsOfFour/4)+1.5
             #print(countsOfFour)
-        elif (countsOfFour % 2 == 0) and countsOfFour > 1: #Pattern [1 3 ...] use arthemetic series to solve for n
-            count2 = ((countsOfFour - 1 + 2) / 2) - 0.5
-        elif (countsOfFour % 2 != 0) and countsOfFour > 1: #Pattern [1 3 ...] use arthemetic series to solve for n
-            count2 = (countsOfFour - 1 + 2) / 2
+        elif ((countsOfFour % 2 == 0) and (countsOfFour%4 != 0)):
+            count2 = (countsOfFour/4)+1.75
+    #print(countsOfFour)
+    #print(count2)
     return count2
 #Check if there is citations
 def checkCitations(tempList):
