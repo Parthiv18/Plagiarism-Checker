@@ -14,6 +14,21 @@ def checkFile(readFile1,readFile2):
         #print("Same!")
         return True
     return False
+#Read
+def addData (newList):
+    #If texts lengths are not the same
+    if (len(sep1) > len(sep2)):
+        while (len(sep1) != len(sep2)):
+            sep2.append(" ")
+    elif (len(sep2) > len(sep1)):
+        while (len(sep1) != len(sep2)):
+            sep1.append(" ")
+
+    for index, item in enumerate(sep1, start=0):  # default is zero
+        if (sep1[index] == sep2[index]):
+            newList.append(index)
+        # print(index, item)
+    return newList
 #Rule 2: 4 same words in a row
 def consecutiveCounter(newList):
     countsOfFour = 0
@@ -30,7 +45,6 @@ def consecutiveCounter(newList):
         elif (countsOfFour % 2 != 0) and countsOfFour > 1: #Pattern [1 3 ...] use arthemetic series to solve for n
             count2 = (countsOfFour - 1 + 2) / 2
     return count2
-
 #Check if there is citations
 def checkCitations(tempList):
     for i in range(len(tempList)):  # (name,2)
@@ -40,24 +54,27 @@ def checkCitations(tempList):
 def percentage(a,b):
     return (a/b) * 100
 
+#Get Files
 getFile1 = openFile("p1.txt")
 getFile2 = openFile("p2.txt")
 readFile1 = readFile(getFile1)
 readFile2 = readFile(getFile2)
-
 sep1=splitFile(readFile1)
 sep2=splitFile(readFile2)
 
+#Read Data (addData) - Converts string into list
+#Rule 1 (checkFile) - All words are the same
+#Rule 2 (consecutiveCounter) - 4 consecutive words are the same
+#Safe Case (checkCitations) - Citations in text detected (name,num)
+
+newL = []
+newList = addData(newL)
+
+#Test
 print(sep1)
 print(sep2)
-
-newList = []
-for index, item in enumerate(sep1, start=0):   # default is zero
-    if (sep1[index]==sep2[index]):
-        newList.append(index)
-    #print(index, item)
-
 print(newList)
+
 if(checkFile(readFile1,readFile2)==True): #Rule 1
     print("Detected 100%")
 elif(consecutiveCounter(newList)>0):
