@@ -1,5 +1,5 @@
 #Plagiarism Checker
-
+import math,re
 #Open and Read files
 def openFile(fileName):
     return open(fileName,encoding='cp437')
@@ -29,13 +29,14 @@ def consecutiveCounter(newList):
             count2 = ((countsOfFour - 1 + 2) / 2) - 0.5
         elif (countsOfFour % 2 != 0) and countsOfFour > 1: #Pattern [1 3 ...] use arthemetic series to solve for n
             count2 = (countsOfFour - 1 + 2) / 2
-    #print(count2)
-    #if count2 > 0: #plagiarism found
-        #return (count2 / len(newList)) * 100 #Return Percentage fl
     return count2
-    #else:
-        #return 0
 
+#Check if there is citations
+def checkCitations(tempList):
+    for i in range(len(tempList)):  # (name,2)
+        # if (sep1[i][0]=='('):
+        if (re.search('([a-zA-z],[0-9]+)', tempList[i])):
+            print("Citations Detected: ", tempList[i])
 def percentage(a,b):
     return (a/b) * 100
 
@@ -55,14 +56,16 @@ for index, item in enumerate(sep1, start=0):   # default is zero
     if (sep1[index]==sep2[index]):
         newList.append(index)
     #print(index, item)
-#len(arr)
+
 print(newList)
 if(checkFile(readFile1,readFile2)==True): #Rule 1
     print("Detected 100%")
-elif(consecutiveCounter(newList)>=0):
-    print("Detected: " + str(consecutiveCounter(newList)) + " consecutuve (4) words in a word!") #Rule 2
-print("Detected: " + str(percentage(len(newList),len(sep1))) + "%")
-
+elif(consecutiveCounter(newList)>0):
+    print("Detected: " + str(consecutiveCounter(newList)) + " consecutuve (4) words in a row!") #Rule 2
+    print("Detected: " + str(round(percentage(len(newList),len(sep1)),2)) + "%")
+else:
+    print("Safe")
+checkCitations(sep1)
 
 
 
