@@ -37,12 +37,12 @@ def consecutiveCounter(newList): #length are the same
         # check the conditions for 4 consecutive numbers in a row
         if (newList[i] == newList[i + 1] - 1 and newList[i] == newList[i + 2] - 2 and newList[i] == newList[i + 3] - 3):
             countsOfFour += 1  # increase counter
-    if (countsOfFour == 1 or countsOfFour % 4 == 0): #if counter is 0 or 1 or factor of 4 we can reduence it too
+    if (countsOfFour == 1 or countsOfFour % 4 == 0): #if counter of 4 is 0 or 1 or factor of 4 we can reduence it too
         count2 = countsOfFour
     elif ((countsOfFour % 2 == 0) and (countsOfFour % 4 != 0)):  # if the counts of 4 is one make new counter to 1
         count2 = (countsOfFour / 4) + 1.5
         # print(countsOfFour)
-    elif ((countsOfFour % 2 != 0) and (countsOfFour % 4 != 0)):
+    elif ((countsOfFour % 2 != 0) and (countsOfFour % 4 != 0)): #if counter of 4 is not a factor of 2 and not a factor of 4
         count2 = (countsOfFour / 4) + 0.75
     print(countsOfFour)
     print(count2)
