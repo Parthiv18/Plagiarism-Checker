@@ -30,20 +30,20 @@ def addData (newList):
         # print(index, item)
     return newList
 #Rule 2: 4 same words in a row
-def consecutiveCounter(newList):
+def consecutiveCounter(newList): #length are the same
     countsOfFour = 0
     count2 = 0
-    for i in range(len(newList) - 3): #loop through the list
-        #check the conditions for 4 consecutive numbers in a row
+    for i in range(len(newList) - 3):  # loop through the list
+        # check the conditions for 4 consecutive numbers in a row
         if (newList[i] == newList[i + 1] - 1 and newList[i] == newList[i + 2] - 2 and newList[i] == newList[i + 3] - 3):
-            countsOfFour += 1 #increase counter
-        if (countsOfFour == 1 and countsOfFour%4==0):
-            count2 = countsOfFour/2
-        elif ((countsOfFour % 2 == 0) and (countsOfFour%4 != 0)): #if the counts of 4 is one make new counter to 1
-            count2 = (countsOfFour/4)+1.5
-            #print(countsOfFour)
-        elif ((countsOfFour % 2 == 0) and (countsOfFour%4 != 0)):
-            count2 = (countsOfFour/4)+1.75
+            countsOfFour += 1  # increase counter
+    if (countsOfFour == 0 or countsOfFour == 1 or countsOfFour % 4 == 0):
+        count2 = countsOfFour / 2
+    elif ((countsOfFour % 2 == 0) and (countsOfFour % 4 != 0)):  # if the counts of 4 is one make new counter to 1
+        count2 = (countsOfFour / 4) + 1.5
+        # print(countsOfFour)
+    elif ((countsOfFour % 2 != 0) and (countsOfFour % 4 != 0)):
+        count2 = (countsOfFour / 4) + 1.75
     #print(countsOfFour)
     #print(count2)
     return count2
@@ -64,6 +64,8 @@ readFile2 = readFile(getFile2)
 sep1=splitFile(readFile1)
 sep2=splitFile(readFile2)
 
+
+#************************* SUBTRACT THE LENGTH AND CHECK INDEX *************************
 #Read Data (addData) - Converts string into list
 #Rule 1 (checkFile) - All words are the same
 #Rule 2 (consecutiveCounter) - 4 consecutive words are the same
