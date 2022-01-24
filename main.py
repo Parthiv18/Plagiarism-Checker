@@ -57,8 +57,8 @@ def percentage(a,b):
     return (a/b) * 100
 
 #Get Files
-getFile1 = openFile("p1.txt")
-getFile2 = openFile("p2.txt")
+getFile1 = openFile(r"C:\Users\Parthiv\Downloads\VS Code\Random code\Python Projects\Plagiarism-Checker\p1.txt")
+getFile2 = openFile(r"C:\Users\Parthiv\Downloads\VS Code\Random code\Python Projects\Plagiarism-Checker\p2.txt")
 readFile1 = readFile(getFile1)
 readFile2 = readFile(getFile2)
 sep1=splitFile(readFile1)
